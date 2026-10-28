@@ -115,6 +115,12 @@ h2{font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-.06em;line-height:1.1;margin
 section{padding:55px 0}
 .project{padding:20px}
 }
+@media(max-width:420px){
+.stats{grid-template-columns:1fr}
+.stat{display:flex;align-items:baseline;gap:12px}
+.stat strong{min-width:3.2rem}
+.hero-card{padding:20px}
+}
 @media(prefers-reduced-motion:reduce){
 html{scroll-behavior:auto}
 *,*::before,*::after{transition:none!important;animation:none!important}
