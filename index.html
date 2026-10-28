@@ -36,9 +36,15 @@ a:hover{color:var(--accent)}
 .hero{padding:94px 0 76px;display:grid;grid-template-columns:1.45fr .8fr;gap:50px;align-items:center}
 .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--accent);font-size:.78rem;text-transform:uppercase;letter-spacing:.15em;font-weight:800}
 .dot{flex:none;width:7px;height:7px;background:var(--accent);border-radius:50%;box-shadow:0 0 15px #a3f56b99}
-h1{font-size:clamp(2.3rem,6vw,4.6rem);line-height:1.03;letter-spacing:-.065em;margin:22px 0 24px;max-width:800px;overflow-wrap:break-word}
-h1 em{font-style:normal;color:var(--accent)}
-.lead{font-size:1.14rem;color:var(--soft);max-width:680px}
+h1{font-size:clamp(2.5rem,9.5vw,5.6rem);line-height:1;letter-spacing:-.07em;margin:20px 0 14px;max-width:800px;overflow-wrap:break-word}
+.h1-dot{color:var(--accent)}
+.tagline{font-size:clamp(1.3rem,3.2vw,2rem);line-height:1.25;letter-spacing:-.03em;font-weight:650;margin:0 0 18px;max-width:640px;color:var(--text)}
+.tagline em{font-style:normal;color:var(--accent)}
+.pillars{list-style:none;margin:22px 0 16px;padding:0;display:grid;gap:10px}
+.pillars li{border:1px solid #ffffff12;border-left:3px solid var(--accent);background:#0a0d12;border-radius:10px;padding:12px 14px}
+.pillars strong{display:block}
+.pillars span{color:var(--muted);font-size:.88rem}
+.lead{font-size:1.08rem;color:var(--soft);max-width:680px}
 .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
 .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:10px;padding:12px 18px;min-height:44px;font-weight:750;border:1px solid var(--line);transition:transform .18s,background .18s}
 .btn:hover{transform:translateY(-2px)}
@@ -46,9 +52,6 @@ h1 em{font-style:normal;color:var(--accent)}
 .primary:hover{color:#10150d;background:var(--accent2)}
 .hero-card{border:1px solid var(--line);background:linear-gradient(145deg,#171e28,#0f131a);padding:26px;border-radius:22px;box-shadow:0 25px 90px #0005;min-width:0}
 .card-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:.82rem}
-.code-window{margin:22px 0 16px;border:1px solid #ffffff12;background:#0a0d12;border-radius:12px;padding:18px;font:.85rem/1.9 ui-monospace,SFMono-Regular,Menlo,monospace;color:#b8c5d7;overflow:hidden}
-.code-window .green{color:var(--accent)}
-.code-window .purple{color:#c6a8ff}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .stat{background:#ffffff06;border-radius:10px;padding:12px;min-width:0}
 .stat strong{display:block;font-size:1.35rem;letter-spacing:-.04em}
@@ -140,14 +143,15 @@ html{scroll-behavior:auto}
 <main id="main">
 <div id="top" class="wrap hero">
   <div>
-    <div class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-i18n="eyebrow">Software Architecture · Backend · AI</span></div>
-    <h1 data-i18n="heroTitle">I design and build reliable, scalable systems for <em>real-world</em> problems.</h1>
-    <p class="lead" data-i18n="heroLead">Software Architect and Senior Backend Engineer working with cloud, serverless and microservice architectures, and AI integrations in real products. I turn complex requirements into maintainable systems.</p>
+    <div class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-i18n="eyebrow">Software Architect · Senior Backend Engineer</span></div>
+    <h1>Gabriel Jalil<span class="h1-dot" aria-hidden="true">.</span></h1>
+    <p class="tagline" data-i18n="heroTagline">Architecting reliable backends and <em>AI-enabled</em> products.</p>
+    <p class="lead" data-i18n="heroLead">About four years in IT, with hands-on AWS experience. I design APIs, serverless and microservice systems, and integrate AI into real products.</p>
     <div class="actions"><a class="btn primary" href="#work" data-i18n="ctaWork">Explore projects ↘</a><a class="btn" href="#contact" data-i18n="ctaContact">Contact me</a></div>
   </div>
   <aside class="hero-card" aria-label="Professional summary" data-i18n-aria="cardLabel">
-    <div class="card-top"><span>GABRIEL JALIL</span><span data-i18n="cardLocation">ARG · REMOTE</span></div>
-    <div class="code-window" aria-hidden="true"><div><span class="purple">const</span> engineer = {</div><div>&nbsp; focus: [</div><div>&nbsp;&nbsp;&nbsp; <span class="green">'architecture'</span>,</div><div>&nbsp;&nbsp;&nbsp; <span class="green">'backend'</span>,</div><div>&nbsp;&nbsp;&nbsp; <span class="green">'applied AI'</span></div><div>&nbsp; ]</div><div>};</div></div>
+    <div class="card-top"><span data-i18n="cardTitle">FOCUS AREAS</span><span data-i18n="cardLocation">ARG · REMOTE</span></div>
+    <ul class="pillars"><li><strong data-i18n="pil1">Software architecture</strong><span data-i18n="pil1Text">Boundaries, data flows and trade-offs</span></li><li><strong data-i18n="pil2">Backend engineering</strong><span data-i18n="pil2Text">APIs, microservices, serverless, data</span></li><li><strong data-i18n="pil3">Applied AI</strong><span data-i18n="pil3Text">LLM features inside real products</span></li></ul>
     <div class="stats"><div class="stat"><strong>4+</strong><span data-i18n="statYears">years in tech</span></div><div class="stat"><strong>AWS</strong><span data-i18n="statCloud">cloud systems</span></div><div class="stat"><strong>AI</strong><span data-i18n="statAI">product integrations</span></div></div>
   </aside>
 </div>
@@ -221,10 +225,12 @@ en: {
 meta:{title:"Gabriel Jalil — Software Architect & Senior Backend Engineer",description:"Gabriel Jalil — Software Architect and Senior Backend Engineer building reliable, scalable and maintainable cloud, serverless and AI-enabled backend systems. Remote, based in Córdoba, Argentina."},
 toggle:{text:"Español",aria:"Cambiar idioma a español",lang:"es"},
 skip:"Skip to content",navLabel:"Main navigation",navAbout:"About",navSkills:"Skills",navWork:"Selected work",navContact:"Contact",
-eyebrow:"Software Architecture · Backend · AI",
-heroTitle:'I design and build reliable, scalable systems for <em>real-world</em> problems.',
-heroLead:"Software Architect and Senior Backend Engineer working with cloud, serverless and microservice architectures, and AI integrations in real products. I turn complex requirements into maintainable systems.",
-ctaWork:"Explore projects ↘",ctaContact:"Contact me",cardLabel:"Professional summary",cardLocation:"ARG · REMOTE",statYears:"years in tech",statCloud:"cloud systems",statAI:"product integrations",
+eyebrow:"Software Architect · Senior Backend Engineer",
+heroTagline:'Architecting reliable backends and <em>AI-enabled</em> products.',
+heroLead:"About four years in IT, with hands-on AWS experience. I design APIs, serverless and microservice systems, and integrate AI into real products.",
+ctaWork:"Explore projects ↘",ctaContact:"Contact me",cardLabel:"Professional summary",cardTitle:"FOCUS AREAS",cardLocation:"ARG · REMOTE",
+pil1:"Software architecture",pil1Text:"Boundaries, data flows and trade-offs",pil2:"Backend engineering",pil2Text:"APIs, microservices, serverless, data",pil3:"Applied AI",pil3Text:"LLM features inside real products",
+statYears:"years in IT",statCloud:"hands-on cloud",statAI:"in real products",
 aboutKicker:"About",aboutTitle:"Engineering mindset.<br>Software that delivers.",aboutIntro:"I work across architecture and implementation, balancing delivery speed with reliability, security and long-term maintainability.",
 aboutCopy1:"I'm an IT professional with about four years of experience, focused on software architecture, backend engineering and cloud. I work with APIs, data persistence, external integrations and AI-powered features.",
 aboutCopy2:"My background is in Chemical Engineering; I moved into software in 2022. That training shaped how I approach systems: understand the whole, make trade-offs explicit and decide with evidence.",
@@ -248,10 +254,12 @@ es: {
 meta:{title:"Gabriel Jalil — Arquitecto de Software y Senior Backend Engineer",description:"Gabriel Jalil — Arquitecto de Software y Senior Backend Engineer. Diseño sistemas backend cloud, serverless y con IA confiables, escalables y mantenibles. Remoto, desde Córdoba, Argentina."},
 toggle:{text:"English",aria:"Switch language to English",lang:"en"},
 skip:"Saltar al contenido",navLabel:"Navegación principal",navAbout:"Sobre mí",navSkills:"Habilidades",navWork:"Proyectos",navContact:"Contacto",
-eyebrow:"Arquitectura de software · Backend · IA",
-heroTitle:'Diseño y construyo sistemas confiables y escalables para problemas del <em>mundo real</em>.',
-heroLead:"Arquitecto de Software y Senior Backend Engineer. Trabajo con arquitecturas cloud, serverless y de microservicios, e integro IA en productos reales. Convierto requisitos complejos en sistemas mantenibles.",
-ctaWork:"Ver proyectos ↘",ctaContact:"Contactarme",cardLabel:"Resumen profesional",cardLocation:"ARG · REMOTO",statYears:"años en tecnología",statCloud:"sistemas cloud",statAI:"integraciones de producto",
+eyebrow:"Arquitecto de Software · Senior Backend Engineer",
+heroTagline:'Diseño backends confiables y productos con <em>IA integrada</em>.',
+heroLead:"Unos cuatro años en IT, con experiencia práctica en AWS. Diseño APIs, sistemas serverless y de microservicios, e integro IA en productos reales.",
+ctaWork:"Ver proyectos ↘",ctaContact:"Contactarme",cardLabel:"Resumen profesional",cardTitle:"ÁREAS DE FOCO",cardLocation:"ARG · REMOTO",
+pil1:"Arquitectura de software",pil1Text:"Límites, flujos de datos y trade-offs",pil2:"Ingeniería backend",pil2Text:"APIs, microservicios, serverless, datos",pil3:"IA aplicada",pil3Text:"Funcionalidades con LLM en productos reales",
+statYears:"años en IT",statCloud:"cloud práctico",statAI:"en productos reales",
 aboutKicker:"Sobre mí",aboutTitle:"Mentalidad de ingeniería.<br>Software que resuelve.",aboutIntro:"Trabajo entre la arquitectura y la implementación, equilibrando velocidad de entrega, confiabilidad, seguridad y mantenibilidad a largo plazo.",
 aboutCopy1:"Soy profesional de IT con unos cuatro años de experiencia, enfocado en arquitectura de software, ingeniería backend y cloud. Trabajo con APIs, persistencia de datos, integraciones externas y funcionalidades con IA.",
 aboutCopy2:"Mi formación original es Ingeniería Química y pasé al software en 2022. Esa base marcó mi forma de abordar los sistemas: entender el conjunto, explicitar los trade-offs y decidir con evidencia.",
