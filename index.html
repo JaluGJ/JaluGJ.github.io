@@ -206,7 +206,7 @@ html{scroll-behavior:auto}
     <article class="project"><span class="num" data-i18n="p2Num">02 / APPLIED AI</span><h3 data-i18n="p2Title">AI-enabled Knowledge Workflows</h3>
       <p class="project-summary" data-i18n="p2Summary">A Bedrock-backed chatbot for natural answers, with prompts and response structure designed for the frontend.</p>
       <p class="project-role"><strong data-i18n="lblRole">My contribution:</strong> <span data-i18n="p2Role">Prompt design and Amazon Bedrock integration.</span></p>
-      <ul class="tags" aria-label="Tech stack" data-i18n-aria="lblStack"><li class="tag">Amazon Bedrock</li></ul>
+      <ul class="tags" aria-label="Tech stack" data-i18n-aria="lblStack"><li class="tag">Amazon Bedrock</li><li class="tag">AWS Lambda</li><li class="tag">Step Functions</li><li class="tag">Python</li><li class="tag">API Gateway</li><li class="tag">CI/CD</li><li class="tag">GitHub Actions</li></ul>
       <details><summary><span data-i18n="detailsLabel">Technical details</span><span class="sr-only" data-i18n="p2DetailName"> — AI-enabled Knowledge Workflows</span></summary>
         <dl>
           <div><dt data-i18n="lblContext">Context</dt><dd data-i18n="p2Context">The product needed a chatbot to answer questions in a natural, conversational tone.</dd></div>
@@ -218,7 +218,7 @@ html{scroll-behavior:auto}
     <article class="project"><span class="num" data-i18n="p3Num">03 / MESSAGING</span><h3 data-i18n="p3Title">WhatsApp AI Assistant Integration</h3>
       <p class="project-summary" data-i18n="p3Summary">WhatsApp integration for a conversational appointment assistant; Calendar scheduling was part of the requested scope.</p>
       <p class="project-role"><strong data-i18n="lblRole">My contribution:</strong> <span data-i18n="p3Role">Meta API integration and integration-system development.</span></p>
-      <ul class="tags" aria-label="Tech stack" data-i18n-aria="lblStack"><li class="tag">WhatsApp Cloud API (Meta)</li></ul>
+      <ul class="tags" aria-label="Tech stack" data-i18n-aria="lblStack"><li class="tag">WhatsApp Cloud API (Meta)</li><li class="tag">AWS Lambda</li><li class="tag">API Gateway</li><li class="tag">CI/CD</li><li class="tag">GitHub Actions</li></ul>
       <details><summary><span data-i18n="detailsLabel">Technical details</span><span class="sr-only" data-i18n="p3DetailName"> — WhatsApp AI Assistant Integration</span></summary>
         <dl>
           <div><dt data-i18n="lblContext">Context</dt><dd data-i18n="p3Context">A small practice needed an assistant to respond to different users through WhatsApp and support appointment requests.</dd></div>
@@ -229,10 +229,11 @@ html{scroll-behavior:auto}
     <article class="project"><span class="num" data-i18n="p4Num">04 / PRODUCT ANALYTICS</span><h3 data-i18n="p4Title">Operational Metrics Service</h3>
       <p class="project-summary" data-i18n="p4Summary">Corrections to usage-metrics code for a real-time translator, focused on the data needed to understand consumption and cost.</p>
       <p class="project-role"><strong data-i18n="lblRole">My contribution:</strong> <span data-i18n="p4Role">Code corrections and selection of relevant metrics.</span></p>
-      <p class="note" data-i18n="p4Stack">Tech stack · pending confirmation.</p>
+      <ul class="tags" aria-label="Tech stack" data-i18n-aria="lblStack"><li class="tag">AWS Lambda</li><li class="tag">Step Functions</li><li class="tag">CI/CD</li><li class="tag">GitHub Actions</li><li class="tag" data-i18n="tagAWSMonitoring">AWS monitoring</li><li class="tag">Deepgram</li></ul>
       <details><summary><span data-i18n="detailsLabel">Technical details</span><span class="sr-only" data-i18n="p4DetailName"> — Operational Metrics Service</span></summary>
         <dl>
           <div><dt data-i18n="lblContext">Context</dt><dd data-i18n="p4Context">The team needed usage metrics for a real-time translator to understand resource consumption and associated expenses.</dd></div>
+          <div><dt data-i18n="lblSources">Metric sources</dt><dd data-i18n="p4Sources">The service collected metrics from Deepgram and AWS monitoring services to support usage and cost analysis.</dd></div>
           <div><dt data-i18n="lblChallenge">Challenge</dt><dd data-i18n="p4Challenge">Identify which data mattered and how to obtain it, rather than collecting unnecessary information.</dd></div>
           <div><dt data-i18n="lblImplementation">My implementation</dt><dd data-i18n="p4Implementation">I corrected existing code and defined which relevant data could be collected and how to obtain it. This was not a claim of designing the entire service.</dd></div>
         </dl>
@@ -317,7 +318,8 @@ p4Num:"04 / PRODUCT ANALYTICS",p4Title:"Operational Metrics Service",
 p4DetailName:" — Operational Metrics Service",
 p4Summary:"Corrections to usage-metrics code for a real-time translator, focused on the data needed to understand consumption and cost.",
 p4Role:"Code corrections and selection of relevant metrics.",
-p4Stack:"Tech stack · pending confirmation.",
+tagAWSMonitoring:"AWS monitoring",lblSources:"Metric sources",
+p4Sources:"The service collected metrics from Deepgram and AWS monitoring services to support usage and cost analysis.",
 p4Context:"The team needed usage metrics for a real-time translator to understand resource consumption and associated expenses.",
 p4Challenge:"Identify which data mattered and how to obtain it, rather than collecting unnecessary information.",
 p4Implementation:"I corrected existing code and defined which relevant data could be collected and how to obtain it. This was not a claim of designing the entire service.",
@@ -377,7 +379,8 @@ p4Num:"04 / ANALÍTICA DE PRODUCTO",p4Title:"Servicio de métricas operativas",
 p4DetailName:" — Servicio de métricas operativas",
 p4Summary:"Correcciones al código de métricas de un traductor en tiempo real, enfocadas en los datos necesarios para entender consumo y costos.",
 p4Role:"Corrección de código y selección de métricas relevantes.",
-p4Stack:"Tecnologías · pendientes de confirmación.",
+tagAWSMonitoring:"Monitoreo de AWS",lblSources:"Fuentes de métricas",
+p4Sources:"El servicio obtenía métricas de Deepgram y de servicios de monitoreo de AWS para analizar el consumo y los costos.",
 p4Context:"El equipo necesitaba métricas de uso de un traductor en tiempo real para entender el consumo de recursos y los gastos asociados.",
 p4Challenge:"Identificar qué datos importaban y cómo obtenerlos, en lugar de recopilar información innecesaria.",
 p4Implementation:"Corregí código existente y definí qué datos relevantes podían recopilarse y cómo obtenerlos. Esto no implica haber diseñado el servicio completo.",
