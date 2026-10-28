@@ -17,20 +17,21 @@
 :root{--bg:#0b0d12;--panel:#11151d;--text:#eef2f8;--muted:#a1adbf;--soft:#c4ccda;--line:#273140;--accent:#a3f56b;--accent2:#c2ff9b;--max:1120px}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:16px;-webkit-text-size-adjust:100%}
-body{margin:0;overflow-x:hidden;background:radial-gradient(ellipse at 80% 0%,#1b2b28 0,transparent 32%),var(--bg);color:var(--text);font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{margin:0;background:radial-gradient(ellipse at 80% 0%,#1b2b28 0,transparent 32%),var(--bg);color:var(--text);font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 a{color:inherit;text-decoration:none}
 a:hover{color:var(--accent)}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
 .skip{position:absolute;left:12px;top:-60px;z-index:10;background:var(--accent);color:#10150d;padding:10px 14px;border-radius:8px;font-weight:750}
 .skip:focus{top:12px;color:#10150d}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 .wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
 
 .nav{display:flex;justify-content:space-between;align-items:center;gap:12px 20px;flex-wrap:wrap;padding:23px 0;border-bottom:1px solid #ffffff12}
-.brand{font-weight:800;font-size:1.15rem;letter-spacing:-.04em;white-space:nowrap}
+.brand{display:inline-flex;align-items:center;min-height:44px;font-weight:800;font-size:1.15rem;letter-spacing:-.04em;white-space:nowrap}
 .brand span{color:var(--accent)}
 .navlinks{display:flex;gap:25px;color:var(--muted);font-size:.92rem}
-.navlinks a{padding:6px 0}
-.lang{border:1px solid var(--line);background:transparent;color:var(--text);border-radius:999px;padding:8px 14px;min-height:40px;font:inherit;font-size:.9rem;cursor:pointer}
+.navlinks a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:6px 4px}
+.lang{border:1px solid var(--line);background:transparent;color:var(--text);border-radius:999px;padding:8px 14px;min-height:44px;font:inherit;font-size:.9rem;cursor:pointer}
 .lang:hover{border-color:var(--accent);color:var(--accent)}
 
 .hero{padding:94px 0 76px;display:grid;grid-template-columns:1.45fr .8fr;gap:50px;align-items:center}
@@ -74,11 +75,17 @@ h2{font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-.06em;line-height:1.1;margin
 .skill h3{margin:0 0 12px;font-size:1.03rem}
 .tags{display:flex;flex-wrap:wrap;gap:7px;margin:0;padding:0;list-style:none}
 .tag{font-size:.8rem;color:#c4cedc;border:1px solid #ffffff17;background:#ffffff05;padding:5px 9px;border-radius:7px}
-.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;align-items:start}
 .project{border:1px solid var(--line);background:linear-gradient(160deg,#151b25,#0f1218);border-radius:18px;padding:25px;display:flex;flex-direction:column;min-width:0}
 .project .num{color:var(--accent);font:.8rem ui-monospace,monospace}
 .project h3{font-size:1.3rem;line-height:1.2;letter-spacing:-.03em;margin:14px 0 14px}
-.project dl{margin:0 0 20px;display:grid;gap:12px}
+.project .project-summary{margin:0 0 14px;color:var(--soft)}
+.project .project-role{margin:0 0 18px;font-size:.88rem;color:var(--muted)}
+.project .project-role strong{color:var(--accent)}
+.project details{margin-top:20px;border-top:1px solid var(--line)}
+.project summary{cursor:pointer;padding:12px 0;min-height:44px;font-weight:650;color:var(--accent)}
+.project summary:hover{color:var(--accent2)}
+.project dl{margin:10px 0 0;display:grid;gap:16px}
 .project dt{color:var(--text);font-size:.74rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px}
 .project dd{margin:0;color:var(--muted);font-size:.95rem}
 .project .tags{margin-top:auto}
@@ -93,11 +100,13 @@ h2{font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-.06em;line-height:1.1;margin
 .contact p{color:var(--muted);max-width:580px}
 .contact-links{display:grid;gap:10px;min-width:0}
 .contact-link{display:flex;flex-direction:column;border:1px solid var(--line);background:#0b0d1266;padding:12px 14px;min-height:44px;border-radius:10px;color:#dce4ef;overflow-wrap:anywhere;transition:border-color .18s}
-.contact-link:hover{border-color:var(--accent)}
+.contact-link:hover,.contact-link:focus-visible{border-color:var(--accent);background:#a3f56b0a}
 .contact-link strong{font-size:.95rem}
 .contact-link span{color:var(--muted);font-size:.85rem}
 .location{color:var(--muted);font-size:.9rem;margin:2px 4px 0}
-.footer{padding:26px 0 35px;color:#8791a2;font-size:.85rem;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.footer{padding:26px 0 35px;color:#8791a2;font-size:.85rem;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.footer-links{display:flex;flex-wrap:wrap;gap:8px 18px}
+.footer-links a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;text-decoration:underline;text-underline-offset:4px}
 
 @media(max-width:800px){
 .hero{grid-template-columns:1fr;padding:66px 0 55px;gap:30px}
@@ -115,6 +124,7 @@ h2{font-size:clamp(1.8rem,4vw,3rem);letter-spacing:-.06em;line-height:1.1;margin
 .hero{padding-top:50px}
 .contact{padding:23px}
 .nav{padding:17px 0}
+.navlinks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 12px}
 section{padding:55px 0}
 .project{padding:20px}
 }
@@ -134,7 +144,7 @@ html{scroll-behavior:auto}
 <body>
 <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 <header class="wrap nav">
-  <a class="brand" href="#top" aria-label="Gabriel Jalil — top of page">Gabriel Jalil<span>.</span></a>
+  <a class="brand" href="#top" aria-label="Gabriel Jalil — top of page" data-i18n-aria="brandLabel">Gabriel Jalil<span>.</span></a>
   <nav class="navlinks" aria-label="Main navigation" data-i18n-aria="navLabel">
     <a href="#about" data-i18n="navAbout">About</a><a href="#skills" data-i18n="navSkills">Skills</a><a href="#work" data-i18n="navWork">Selected work</a><a href="#contact" data-i18n="navContact">Contact</a>
   </nav>
@@ -152,7 +162,7 @@ html{scroll-behavior:auto}
   <aside class="hero-card" aria-label="Professional summary" data-i18n-aria="cardLabel">
     <div class="card-top"><span data-i18n="cardTitle">FOCUS AREAS</span><span data-i18n="cardLocation">ARG · REMOTE</span></div>
     <ul class="pillars"><li><strong data-i18n="pil1">Software architecture</strong><span data-i18n="pil1Text">Boundaries, data flows and trade-offs</span></li><li><strong data-i18n="pil2">Backend engineering</strong><span data-i18n="pil2Text">APIs, microservices, serverless, data</span></li><li><strong data-i18n="pil3">Applied AI</strong><span data-i18n="pil3Text">LLM features inside real products</span></li></ul>
-    <div class="stats"><div class="stat"><strong>4+</strong><span data-i18n="statYears">years in tech</span></div><div class="stat"><strong>AWS</strong><span data-i18n="statCloud">cloud systems</span></div><div class="stat"><strong>AI</strong><span data-i18n="statAI">product integrations</span></div></div>
+    <div class="stats"><div class="stat"><strong>~4</strong><span data-i18n="statYears">years in IT</span></div><div class="stat"><strong>AWS</strong><span data-i18n="statCloud">hands-on experience</span></div><div class="stat"><strong>AI</strong><span data-i18n="statAI">in real products</span></div></div>
   </aside>
 </div>
 
@@ -180,27 +190,55 @@ html{scroll-behavior:auto}
   <div class="section-head"><div><div class="kicker" data-i18n="workKicker">Selected work</div><h2 id="work-title" data-i18n="workTitle">Systems I've worked on</h2></div><p class="section-intro" data-i18n="workIntro">Representative case studies from my experience. Client names and sensitive details are intentionally omitted.</p></div>
   <div class="projects">
     <article class="project"><span class="num" data-i18n="p1Num">01 / CLOUD PLATFORM</span><h3 data-i18n="p1Title">Serverless Business Platform</h3>
-      <dl><div><dt data-i18n="lblProblem">Problem</dt><dd data-i18n="p1Problem">A business product needed a backend that several services could evolve and ship independently across environments.</dd></div>
-      <div><dt data-i18n="lblSolution">Solution</dt><dd data-i18n="p1Solution">A multi-service backend on AWS Lambda and API Gateway, with Cognito-based identity and PostgreSQL persistence.</dd></div>
-      <div><dt data-i18n="lblDecisions">Architecture decisions</dt><dd data-i18n="p1Decisions">Clear service boundaries and deployment workflows that support independent delivery per environment.</dd></div></dl>
-      <ul class="tags"><li class="tag">AWS</li><li class="tag">Python</li><li class="tag">PostgreSQL</li><li class="tag">Cognito</li><li class="tag">CI/CD</li></ul></article>
+      <p class="project-summary" data-i18n="p1Summary">Independent AWS services and asynchronous analysis workflows to address timeout-related gaps in results.</p>
+      <p class="project-role"><strong data-i18n="lblRole">My contribution:</strong> <span data-i18n="p1Role">Architecture design, Lambda development and CI/CD.</span></p>
+      <ul class="tags" aria-label="Tech stack" data-i18n-aria="lblStack"><li class="tag">AWS Lambda</li><li class="tag">API Gateway</li><li class="tag">Step Functions</li><li class="tag">CI/CD</li></ul>
+      <details><summary><span data-i18n="detailsLabel">Technical details</span><span class="sr-only" data-i18n="p1DetailName"> — Serverless Business Platform</span></summary>
+        <dl>
+          <div><dt data-i18n="lblContext">Context</dt><dd data-i18n="p1Context">The platform needed independent services so a failure in one would not take down the whole system.</dd></div>
+          <div><dt data-i18n="lblChallenge">Challenge</dt><dd data-i18n="p1Challenge">Metrics and AI analysis ran longer than API Gateway's response window. Timeouts left gaps in the returned information.</dd></div>
+          <div><dt data-i18n="lblArchitecture">Architecture</dt><dd data-i18n="p1Architecture">Separate AWS Lambda services, with Step Functions orchestrating analysis workflows. Polling retrieved AI results when they were ready.</dd></div>
+          <div><dt data-i18n="lblDecisions">Decisions</dt><dd data-i18n="p1Decisions">I used Step Functions for metrics and AI analysis to decouple processing from the short API response window. Polling avoided keeping the request open while AI processing completed; Lambda execution limits still applied.</dd></div>
+          <div><dt data-i18n="lblImplementation">My implementation</dt><dd data-i18n="p1Implementation">I proposed the architecture, created Lambda functions and worked on CI/CD.</dd></div>
+          <div><dt data-i18n="lblOutcome">Outcome</dt><dd data-i18n="p1Outcome">After the change, the system returned analysis without the information gaps previously caused by timeouts. This is a qualitative observation, not a measured availability guarantee.</dd></div>
+        </dl>
+      </details></article>
     <article class="project"><span class="num" data-i18n="p2Num">02 / APPLIED AI</span><h3 data-i18n="p2Title">AI-enabled Knowledge Workflows</h3>
-      <dl><div><dt data-i18n="lblProblem">Problem</dt><dd data-i18n="p2Problem">AI-powered features needed dependable backend support for documents and transcripts, and had to cope with request time limits.</dd></div>
-      <div><dt data-i18n="lblSolution">Solution</dt><dd data-i18n="p2Solution">Backend patterns combining application APIs, document and transcript storage, metadata, embeddings and vector retrieval.</dd></div>
-      <div><dt data-i18n="lblDecisions">Architecture decisions</dt><dd data-i18n="p2Decisions">Traceable data flows, and asynchronous processing where request time limits apply.</dd></div></dl>
-      <ul class="tags"><li class="tag">Python</li><li class="tag">Amazon Bedrock</li><li class="tag">MongoDB Atlas</li><li class="tag">S3</li><li class="tag">Step Functions</li></ul></article>
+      <p class="project-summary" data-i18n="p2Summary">A Bedrock-backed chatbot for natural answers, with prompts and response structure designed for the frontend.</p>
+      <p class="project-role"><strong data-i18n="lblRole">My contribution:</strong> <span data-i18n="p2Role">Prompt design and Amazon Bedrock integration.</span></p>
+      <ul class="tags" aria-label="Tech stack" data-i18n-aria="lblStack"><li class="tag">Amazon Bedrock</li></ul>
+      <details><summary><span data-i18n="detailsLabel">Technical details</span><span class="sr-only" data-i18n="p2DetailName"> — AI-enabled Knowledge Workflows</span></summary>
+        <dl>
+          <div><dt data-i18n="lblContext">Context</dt><dd data-i18n="p2Context">The product needed a chatbot to answer questions in a natural, conversational tone.</dd></div>
+          <div><dt data-i18n="lblChallenge">Challenge</dt><dd data-i18n="p2Challenge">Answers needed to be useful to users and structured for delivery to the frontend.</dd></div>
+          <div><dt data-i18n="lblImplementation">My implementation</dt><dd data-i18n="p2Implementation">I wrote the prompts and integrated Amazon Bedrock into the chatbot workflow.</dd></div>
+          <div><dt data-i18n="lblDecisions">Decisions</dt><dd data-i18n="p2Decisions">I defined the prompt and response structure. Bedrock was used with effectiveness and lower cost as goals, not verified outcomes.</dd></div>
+        </dl>
+      </details></article>
     <article class="project"><span class="num" data-i18n="p3Num">03 / MESSAGING</span><h3 data-i18n="p3Title">WhatsApp AI Assistant Integration</h3>
-      <dl><div><dt data-i18n="lblProblem">Problem</dt><dd data-i18n="p3Problem">Receive customer messages from WhatsApp and answer them conversationally with an AI assistant.</dd></div>
-      <div><dt data-i18n="lblSolution">Solution</dt><dd data-i18n="p3Solution">Architecture for inbound messages through webhooks, serverless processing and the WhatsApp Cloud API.</dd></div>
-      <div><dt data-i18n="lblDecisions">Architecture decisions</dt><dd data-i18n="p3Decisions">A flow that supports conversational responses and leaves a path to route messages for multiple businesses.</dd></div></dl>
-      <ul class="tags"><li class="tag">WhatsApp Cloud API</li><li class="tag">Webhooks</li><li class="tag">AWS Lambda</li><li class="tag">API Gateway</li></ul></article>
+      <p class="project-summary" data-i18n="p3Summary">WhatsApp integration for a conversational appointment assistant; Calendar scheduling was part of the requested scope.</p>
+      <p class="project-role"><strong data-i18n="lblRole">My contribution:</strong> <span data-i18n="p3Role">Meta API integration and integration-system development.</span></p>
+      <ul class="tags" aria-label="Tech stack" data-i18n-aria="lblStack"><li class="tag">WhatsApp Cloud API (Meta)</li></ul>
+      <details><summary><span data-i18n="detailsLabel">Technical details</span><span class="sr-only" data-i18n="p3DetailName"> — WhatsApp AI Assistant Integration</span></summary>
+        <dl>
+          <div><dt data-i18n="lblContext">Context</dt><dd data-i18n="p3Context">A small practice needed an assistant to respond to different users through WhatsApp and support appointment requests.</dd></div>
+          <div><dt data-i18n="lblChallenge">Challenge</dt><dd data-i18n="p3Challenge">The requested scope included natural conversation and Google Calendar appointment scheduling. Calendar implementation is not yet confirmed.</dd></div>
+          <div><dt data-i18n="lblImplementation">My implementation</dt><dd data-i18n="p3Implementation">I integrated Meta's API and developed the integration system. I am not claiming ownership of the architecture decisions or delivery of the full assistant.</dd></div>
+        </dl>
+      </details></article>
     <article class="project"><span class="num" data-i18n="p4Num">04 / PRODUCT ANALYTICS</span><h3 data-i18n="p4Title">Operational Metrics Service</h3>
-      <dl><div><dt data-i18n="lblProblem">Problem</dt><dd data-i18n="p4Problem">Track daily product metrics and operational failures in a way that can be queried over time.</dd></div>
-      <div><dt data-i18n="lblSolution">Solution</dt><dd data-i18n="p4Solution">Data models and API workflows for daily metrics, upserts, time-window queries and failure tracking.</dd></div>
-      <div><dt data-i18n="lblDecisions">Architecture decisions</dt><dd data-i18n="p4Decisions">Clear relationships between users, products and metric snapshots.</dd></div></dl>
-      <ul class="tags"><li class="tag">MongoDB</li><li class="tag">Python</li><li class="tag" data-i18n="tagModeling">Data modeling</li><li class="tag">REST APIs</li></ul></article>
+      <p class="project-summary" data-i18n="p4Summary">Corrections to usage-metrics code for a real-time translator, focused on the data needed to understand consumption and cost.</p>
+      <p class="project-role"><strong data-i18n="lblRole">My contribution:</strong> <span data-i18n="p4Role">Code corrections and selection of relevant metrics.</span></p>
+      <p class="note" data-i18n="p4Stack">Tech stack · pending confirmation.</p>
+      <details><summary><span data-i18n="detailsLabel">Technical details</span><span class="sr-only" data-i18n="p4DetailName"> — Operational Metrics Service</span></summary>
+        <dl>
+          <div><dt data-i18n="lblContext">Context</dt><dd data-i18n="p4Context">The team needed usage metrics for a real-time translator to understand resource consumption and associated expenses.</dd></div>
+          <div><dt data-i18n="lblChallenge">Challenge</dt><dd data-i18n="p4Challenge">Identify which data mattered and how to obtain it, rather than collecting unnecessary information.</dd></div>
+          <div><dt data-i18n="lblImplementation">My implementation</dt><dd data-i18n="p4Implementation">I corrected existing code and defined which relevant data could be collected and how to obtain it. This was not a claim of designing the entire service.</dd></div>
+        </dl>
+      </details></article>
   </div>
-  <p class="note" data-i18n="workNote">Case studies are anonymized summaries; public demos or repositories are not available.</p>
+  <p class="note" data-i18n="workNote">Anonymized case studies. No public demos or repositories are linked.</p>
 </div></section>
 
 <section id="approach" aria-labelledby="approach-title"><div class="wrap">
@@ -209,7 +247,7 @@ html{scroll-behavior:auto}
 </div></section>
 
 <section id="contact" aria-labelledby="contact-title"><div class="wrap"><div class="contact">
-  <div><div class="kicker" data-i18n="contactKicker">Contact</div><h2 id="contact-title" data-i18n="contactTitle">Let's talk about your backend challenge.</h2><p data-i18n="contactText">I'm open to remote, international opportunities in Software Architecture, Senior Backend Engineering and AI-enabled backend systems.</p><a class="btn primary" href="mailto:gabriel.i.jalil@gmail.com" data-i18n="emailCta">Send me an email ↗</a></div>
+  <div><div class="kicker" data-i18n="contactKicker">Contact</div><h2 id="contact-title" data-i18n="contactTitle">Let's talk about your next engineering hire.</h2><p data-i18n="contactText">Open to remote, international roles in Software Architecture, Senior Backend Engineering and AI-enabled backend systems. Reach me directly by email or LinkedIn.</p><a class="btn primary" href="mailto:gabriel.i.jalil@gmail.com" data-i18n="emailCta">Send me an email ↗</a></div>
   <div class="contact-links">
     <a class="contact-link" href="https://www.linkedin.com/in/jalugj/" target="_blank" rel="noopener noreferrer" data-i18n-aria="linkedinAria" aria-label="Gabriel Jalil on LinkedIn (opens in a new tab)"><strong>LinkedIn</strong><span>linkedin.com/in/jalugj</span></a>
     <a class="contact-link" href="https://github.com/JaluGJ" target="_blank" rel="noopener noreferrer" data-i18n-aria="githubAria" aria-label="Gabriel Jalil on GitHub (opens in a new tab)"><strong>GitHub</strong><span>github.com/JaluGJ</span></a>
@@ -218,7 +256,15 @@ html{scroll-behavior:auto}
   </div>
 </div></div></section>
 </main>
-<footer class="wrap footer"><span>© <span id="year"></span> Gabriel Jalil</span><span data-i18n="footer">Designed around clarity, reliability and useful software.</span></footer>
+<footer class="wrap footer">
+  <span>© <span id="year"></span> Gabriel Jalil</span>
+  <nav class="footer-links" aria-label="Contact links" data-i18n-aria="footerContactLabel">
+    <a href="mailto:gabriel.i.jalil@gmail.com" data-i18n-aria="emailAria" aria-label="Email Gabriel Jalil at gabriel.i.jalil@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/jalugj/" target="_blank" rel="noopener noreferrer" data-i18n-aria="linkedinAria" aria-label="Gabriel Jalil on LinkedIn (opens in a new tab)">LinkedIn</a>
+    <a href="https://github.com/JaluGJ" target="_blank" rel="noopener noreferrer" data-i18n-aria="githubAria" aria-label="Gabriel Jalil on GitHub (opens in a new tab)">GitHub</a>
+  </nav>
+  <span data-i18n="footer">Designed around clarity, reliability and useful software.</span>
+</footer>
 <script>
 const translations = {
 en: {
@@ -230,7 +276,8 @@ heroTagline:'Architecting reliable backends and <em>AI-enabled</em> products.',
 heroLead:"About four years in IT, with hands-on AWS experience. I design APIs, serverless and microservice systems, and integrate AI into real products.",
 ctaWork:"Explore projects ↘",ctaContact:"Contact me",cardLabel:"Professional summary",cardTitle:"FOCUS AREAS",cardLocation:"ARG · REMOTE",
 pil1:"Software architecture",pil1Text:"Boundaries, data flows and trade-offs",pil2:"Backend engineering",pil2Text:"APIs, microservices, serverless, data",pil3:"Applied AI",pil3Text:"LLM features inside real products",
-statYears:"years in IT",statCloud:"hands-on cloud",statAI:"in real products",
+brandLabel:"Gabriel Jalil — top of page",
+statYears:"years in IT",statCloud:"hands-on experience",statAI:"in real products",
 aboutKicker:"About",aboutTitle:"Engineering mindset.<br>Software that delivers.",aboutIntro:"I work across architecture and implementation, balancing delivery speed with reliability, security and long-term maintainability.",
 aboutCopy1:"I'm an IT professional with about four years of experience, focused on software architecture, backend engineering and cloud. I work with APIs, data persistence, external integrations and AI-powered features.",
 aboutCopy2:"My background is in Chemical Engineering; I moved into software in 2022. That training shaped how I approach systems: understand the whole, make trade-offs explicit and decide with evidence.",
@@ -239,14 +286,44 @@ skillsKicker:"Technical skills",skillsTitle:"What I work with",skillsIntro:"Tool
 skill1:"Backend Engineering",skill2:"Cloud & Serverless",skill3:"Databases & Data Modeling",skill4:"AI Integrations",skill5:"Identity & External Integrations",skill6:"DevOps & Technical Leadership",
 tagLeadership:"Technical leadership",tagDecisions:"Architecture decisions",tagModeling:"Data modeling",
 workKicker:"Selected work",workTitle:"Systems I've worked on",workIntro:"Representative case studies from my experience. Client names and sensitive details are intentionally omitted.",
-lblProblem:"Problem",lblSolution:"Solution",lblDecisions:"Architecture decisions",
-p1Num:"01 / CLOUD PLATFORM",p1Title:"Serverless Business Platform",p1Problem:"A business product needed a backend that several services could evolve and ship independently across environments.",p1Solution:"A multi-service backend on AWS Lambda and API Gateway, with Cognito-based identity and PostgreSQL persistence.",p1Decisions:"Clear service boundaries and deployment workflows that support independent delivery per environment.",
-p2Num:"02 / APPLIED AI",p2Title:"AI-enabled Knowledge Workflows",p2Problem:"AI-powered features needed dependable backend support for documents and transcripts, and had to cope with request time limits.",p2Solution:"Backend patterns combining application APIs, document and transcript storage, metadata, embeddings and vector retrieval.",p2Decisions:"Traceable data flows, and asynchronous processing where request time limits apply.",
-p3Num:"03 / MESSAGING",p3Title:"WhatsApp AI Assistant Integration",p3Problem:"Receive customer messages from WhatsApp and answer them conversationally with an AI assistant.",p3Solution:"Architecture for inbound messages through webhooks, serverless processing and the WhatsApp Cloud API.",p3Decisions:"A flow that supports conversational responses and leaves a path to route messages for multiple businesses.",
-p4Num:"04 / PRODUCT ANALYTICS",p4Title:"Operational Metrics Service",p4Problem:"Track daily product metrics and operational failures in a way that can be queried over time.",p4Solution:"Data models and API workflows for daily metrics, upserts, time-window queries and failure tracking.",p4Decisions:"Clear relationships between users, products and metric snapshots.",
-workNote:"Case studies are anonymized summaries; public demos or repositories are not available.",
+lblRole:"My contribution:",lblStack:"Tech stack",detailsLabel:"Technical details",
+lblContext:"Context",lblChallenge:"Challenge",lblArchitecture:"Architecture",lblDecisions:"Decisions",lblImplementation:"My implementation",lblOutcome:"Outcome",
+p1Num:"01 / CLOUD PLATFORM",p1Title:"Serverless Business Platform",
+p1DetailName:" — Serverless Business Platform",
+p1Summary:"Independent AWS services and asynchronous analysis workflows to address timeout-related gaps in results.",
+p1Role:"Architecture design, Lambda development and CI/CD.",
+p1Context:"The platform needed independent services so a failure in one would not take down the whole system.",
+p1Challenge:"Metrics and AI analysis ran longer than API Gateway's response window. Timeouts left gaps in the returned information.",
+p1Architecture:"Separate AWS Lambda services, with Step Functions orchestrating analysis workflows. Polling retrieved AI results when they were ready.",
+p1Decisions:"I used Step Functions for metrics and AI analysis to decouple processing from the short API response window. Polling avoided keeping the request open while AI processing completed; Lambda execution limits still applied.",
+p1Implementation:"I proposed the architecture, created Lambda functions and worked on CI/CD.",
+p1Outcome:"After the change, the system returned analysis without the information gaps previously caused by timeouts. This is a qualitative observation, not a measured availability guarantee.",
+p2Num:"02 / APPLIED AI",p2Title:"AI-enabled Knowledge Workflows",
+p2DetailName:" — AI-enabled Knowledge Workflows",
+p2Summary:"A Bedrock-backed chatbot for natural answers, with prompts and response structure designed for the frontend.",
+p2Role:"Prompt design and Amazon Bedrock integration.",
+p2Context:"The product needed a chatbot to answer questions in a natural, conversational tone.",
+p2Challenge:"Answers needed to be useful to users and structured for delivery to the frontend.",
+p2Implementation:"I wrote the prompts and integrated Amazon Bedrock into the chatbot workflow.",
+p2Decisions:"I defined the prompt and response structure. Bedrock was used with effectiveness and lower cost as goals, not verified outcomes.",
+p3Num:"03 / MESSAGING",p3Title:"WhatsApp AI Assistant Integration",
+p3DetailName:" — WhatsApp AI Assistant Integration",
+p3Summary:"WhatsApp integration for a conversational appointment assistant; Calendar scheduling was part of the requested scope.",
+p3Role:"Meta API integration and integration-system development.",
+p3Context:"A small practice needed an assistant to respond to different users through WhatsApp and support appointment requests.",
+p3Challenge:"The requested scope included natural conversation and Google Calendar appointment scheduling. Calendar implementation is not yet confirmed.",
+p3Implementation:"I integrated Meta's API and developed the integration system. I am not claiming ownership of the architecture decisions or delivery of the full assistant.",
+p4Num:"04 / PRODUCT ANALYTICS",p4Title:"Operational Metrics Service",
+p4DetailName:" — Operational Metrics Service",
+p4Summary:"Corrections to usage-metrics code for a real-time translator, focused on the data needed to understand consumption and cost.",
+p4Role:"Code corrections and selection of relevant metrics.",
+p4Stack:"Tech stack · pending confirmation.",
+p4Context:"The team needed usage metrics for a real-time translator to understand resource consumption and associated expenses.",
+p4Challenge:"Identify which data mattered and how to obtain it, rather than collecting unnecessary information.",
+p4Implementation:"I corrected existing code and defined which relevant data could be collected and how to obtain it. This was not a claim of designing the entire service.",
+workNote:"Anonymized case studies. No public demos or repositories are linked.",
 approachKicker:"How I work",approachTitle:"From ambiguity to production",step1Title:"Understand",step1Text:"Clarify the real problem, constraints, risks and success criteria.",step2Title:"Design",step2Text:"Define boundaries, data flows, failure modes and trade-offs.",step3Title:"Build",step3Text:"Ship in small steps with readable code, review and automation.",step4Title:"Improve",step4Text:"Use feedback, monitoring and cost awareness to evolve the system.",
-contactKicker:"Contact",contactTitle:"Let's talk about your backend challenge.",contactText:"I'm open to remote, international opportunities in Software Architecture, Senior Backend Engineering and AI-enabled backend systems.",emailCta:"Send me an email ↗",
+contactKicker:"Contact",contactTitle:"Let's talk about your next engineering hire.",contactText:"Open to remote, international roles in Software Architecture, Senior Backend Engineering and AI-enabled backend systems. Reach me directly by email or LinkedIn.",emailCta:"Send me an email ↗",footerContactLabel:"Contact links",
 linkedinAria:"Gabriel Jalil on LinkedIn (opens in a new tab)",githubAria:"Gabriel Jalil on GitHub (opens in a new tab)",emailAria:"Email Gabriel Jalil at gabriel.i.jalil@gmail.com",
 location:"Based in Córdoba, Argentina · Remote, open to international roles",footer:"Designed around clarity, reliability and useful software."
 },
@@ -259,7 +336,8 @@ heroTagline:'Diseño backends confiables y productos con <em>IA integrada</em>.'
 heroLead:"Unos cuatro años en IT, con experiencia práctica en AWS. Diseño APIs, sistemas serverless y de microservicios, e integro IA en productos reales.",
 ctaWork:"Ver proyectos ↘",ctaContact:"Contactarme",cardLabel:"Resumen profesional",cardTitle:"ÁREAS DE FOCO",cardLocation:"ARG · REMOTO",
 pil1:"Arquitectura de software",pil1Text:"Límites, flujos de datos y trade-offs",pil2:"Ingeniería backend",pil2Text:"APIs, microservicios, serverless, datos",pil3:"IA aplicada",pil3Text:"Funcionalidades con LLM en productos reales",
-statYears:"años en IT",statCloud:"cloud práctico",statAI:"en productos reales",
+brandLabel:"Gabriel Jalil — inicio de la página",
+statYears:"años en IT",statCloud:"experiencia práctica",statAI:"en productos reales",
 aboutKicker:"Sobre mí",aboutTitle:"Mentalidad de ingeniería.<br>Software que resuelve.",aboutIntro:"Trabajo entre la arquitectura y la implementación, equilibrando velocidad de entrega, confiabilidad, seguridad y mantenibilidad a largo plazo.",
 aboutCopy1:"Soy profesional de IT con unos cuatro años de experiencia, enfocado en arquitectura de software, ingeniería backend y cloud. Trabajo con APIs, persistencia de datos, integraciones externas y funcionalidades con IA.",
 aboutCopy2:"Mi formación original es Ingeniería Química y pasé al software en 2022. Esa base marcó mi forma de abordar los sistemas: entender el conjunto, explicitar los trade-offs y decidir con evidencia.",
@@ -268,14 +346,44 @@ skillsKicker:"Habilidades técnicas",skillsTitle:"Con qué trabajo",skillsIntro:
 skill1:"Ingeniería Backend",skill2:"Cloud y Serverless",skill3:"Bases de datos y modelado de datos",skill4:"Integraciones de IA",skill5:"Identidad e integraciones externas",skill6:"DevOps y liderazgo técnico",
 tagLeadership:"Liderazgo técnico",tagDecisions:"Decisiones de arquitectura",tagModeling:"Modelado de datos",
 workKicker:"Trabajo seleccionado",workTitle:"Sistemas en los que trabajé",workIntro:"Casos representativos de mi experiencia. Omito intencionalmente nombres de clientes y detalles sensibles.",
-lblProblem:"Problema",lblSolution:"Solución",lblDecisions:"Decisiones de arquitectura",
-p1Num:"01 / PLATAFORMA CLOUD",p1Title:"Plataforma de negocio serverless",p1Problem:"Un producto de negocio necesitaba un backend en el que varios servicios pudieran evolucionar y desplegarse de forma independiente en distintos entornos.",p1Solution:"Un backend multiservicio sobre AWS Lambda y API Gateway, con identidad basada en Cognito y persistencia en PostgreSQL.",p1Decisions:"Límites claros entre servicios y flujos de despliegue que permiten entregas independientes por entorno.",
-p2Num:"02 / IA APLICADA",p2Title:"Flujos de conocimiento potenciados por IA",p2Problem:"Las funcionalidades con IA requerían un respaldo backend confiable para documentos y transcripciones, y debían convivir con límites de tiempo en las solicitudes.",p2Solution:"Patrones backend que combinan APIs de aplicación, almacenamiento de documentos y transcripciones, metadatos, embeddings y recuperación vectorial.",p2Decisions:"Flujos de datos trazables y procesamiento asíncrono cuando existen límites de tiempo en las solicitudes.",
-p3Num:"03 / MENSAJERÍA",p3Title:"Integración de asistente de IA con WhatsApp",p3Problem:"Recibir mensajes de clientes por WhatsApp y responderlos de forma conversacional con un asistente de IA.",p3Solution:"Arquitectura para recibir mensajes mediante webhooks, procesamiento serverless y la WhatsApp Cloud API.",p3Decisions:"Un flujo que admite respuestas conversacionales y deja abierto el camino para enrutar mensajes de múltiples negocios.",
-p4Num:"04 / ANALÍTICA DE PRODUCTO",p4Title:"Servicio de métricas operativas",p4Problem:"Registrar métricas diarias de producto y fallos operativos de forma que puedan consultarse a lo largo del tiempo.",p4Solution:"Modelos de datos y flujos de API para métricas diarias, upserts, consultas por períodos y seguimiento de fallos.",p4Decisions:"Relaciones claras entre usuarios, productos y snapshots de métricas.",
-workNote:"Los casos son resúmenes anonimizados; no hay demos ni repositorios públicos disponibles.",
+lblRole:"Mi aporte:",lblStack:"Tecnologías",detailsLabel:"Detalles técnicos",
+lblContext:"Contexto",lblChallenge:"Desafío",lblArchitecture:"Arquitectura",lblDecisions:"Decisiones",lblImplementation:"Mi implementación",lblOutcome:"Resultado",
+p1Num:"01 / PLATAFORMA CLOUD",p1Title:"Plataforma de negocio serverless",
+p1DetailName:" — Plataforma de negocio serverless",
+p1Summary:"Servicios independientes en AWS y análisis asíncronos para resolver los huecos de información causados por timeouts.",
+p1Role:"Diseño de arquitectura, desarrollo de Lambdas y CI/CD.",
+p1Context:"La plataforma necesitaba servicios independientes para que el fallo de uno no provocara la caída de todo el sistema.",
+p1Challenge:"Los análisis de métricas y de IA superaban la ventana de respuesta de API Gateway. Los timeouts dejaban huecos en la información devuelta.",
+p1Architecture:"Servicios separados en AWS Lambda, con Step Functions para orquestar los análisis. El polling permitía obtener las respuestas de IA cuando estaban listas.",
+p1Decisions:"Usé Step Functions para desacoplar los análisis de métricas y de IA de la ventana corta de respuesta de la API. El polling evitó mantener la solicitud abierta mientras terminaba el procesamiento de IA; seguían vigentes los límites de ejecución de Lambda.",
+p1Implementation:"Planteé la arquitectura, creé funciones Lambda y trabajé en CI/CD.",
+p1Outcome:"Tras el cambio, el sistema devolvió los análisis sin los huecos de información que antes provocaban los timeouts. Es una observación cualitativa, no una garantía de disponibilidad medida.",
+p2Num:"02 / IA APLICADA",p2Title:"Flujos de conocimiento potenciados por IA",
+p2DetailName:" — Flujos de conocimiento potenciados por IA",
+p2Summary:"Chatbot con Bedrock para respuestas naturales, con prompts y estructura de respuesta orientados al frontend.",
+p2Role:"Diseño de prompts e integración de Amazon Bedrock.",
+p2Context:"El producto necesitaba un chatbot que respondiera preguntas con un tono natural y conversacional.",
+p2Challenge:"Las respuestas debían ser útiles para las personas y tener una estructura apta para enviarlas al frontend.",
+p2Implementation:"Escribí los prompts e integré Amazon Bedrock en el flujo del chatbot.",
+p2Decisions:"Definí el prompt y la estructura de respuesta. Se utilizó Bedrock buscando efectividad y menor costo, no como resultados verificados.",
+p3Num:"03 / MENSAJERÍA",p3Title:"Integración de asistente de IA con WhatsApp",
+p3DetailName:" — Integración de asistente de IA con WhatsApp",
+p3Summary:"Integración de WhatsApp para un asistente conversacional de turnos; la agenda con Calendar formaba parte del alcance solicitado.",
+p3Role:"Integración de la API de Meta y desarrollo del sistema de integración.",
+p3Context:"Un consultorio pequeño necesitaba un asistente para responder a diferentes usuarios por WhatsApp y recibir solicitudes de turnos.",
+p3Challenge:"El alcance solicitado incluía conversación natural y agenda de turnos con Google Calendar. La implementación de Calendar aún no está confirmada.",
+p3Implementation:"Integré la API de Meta y desarrollé el sistema de integración. No me atribuyo las decisiones de arquitectura ni la entrega del asistente completo.",
+p4Num:"04 / ANALÍTICA DE PRODUCTO",p4Title:"Servicio de métricas operativas",
+p4DetailName:" — Servicio de métricas operativas",
+p4Summary:"Correcciones al código de métricas de un traductor en tiempo real, enfocadas en los datos necesarios para entender consumo y costos.",
+p4Role:"Corrección de código y selección de métricas relevantes.",
+p4Stack:"Tecnologías · pendientes de confirmación.",
+p4Context:"El equipo necesitaba métricas de uso de un traductor en tiempo real para entender el consumo de recursos y los gastos asociados.",
+p4Challenge:"Identificar qué datos importaban y cómo obtenerlos, en lugar de recopilar información innecesaria.",
+p4Implementation:"Corregí código existente y definí qué datos relevantes podían recopilarse y cómo obtenerlos. Esto no implica haber diseñado el servicio completo.",
+workNote:"Casos anonimizados. No se enlazan demos ni repositorios públicos.",
 approachKicker:"Mi forma de trabajar",approachTitle:"De la ambigüedad a producción",step1Title:"Entender",step1Text:"Aclarar el problema real, las restricciones, los riesgos y los criterios de éxito.",step2Title:"Diseñar",step2Text:"Definir límites, flujos de datos, modos de fallo y trade-offs.",step3Title:"Construir",step3Text:"Entregar en pasos pequeños con código legible, revisión y automatización.",step4Title:"Mejorar",step4Text:"Evolucionar el sistema con feedback, monitoreo y atención a los costos.",
-contactKicker:"Contacto",contactTitle:"Hablemos de tu desafío backend.",contactText:"Estoy abierto a oportunidades remotas e internacionales en Arquitectura de Software, Senior Backend Engineering y sistemas backend con IA.",emailCta:"Escribime un email ↗",
+contactKicker:"Contacto",contactTitle:"Hablemos de tu próxima incorporación al equipo.",contactText:"Busco oportunidades remotas e internacionales en arquitectura de software, ingeniería backend senior y sistemas backend con IA. Contactame directamente por email o LinkedIn.",emailCta:"Escribime un email ↗",footerContactLabel:"Enlaces de contacto",
 linkedinAria:"Gabriel Jalil en LinkedIn (se abre en una pestaña nueva)",githubAria:"Gabriel Jalil en GitHub (se abre en una pestaña nueva)",emailAria:"Enviar un email a Gabriel Jalil a gabriel.i.jalil@gmail.com",
 location:"Córdoba, Argentina · Remoto, abierto a roles internacionales",footer:"Diseñado con foco en claridad, confiabilidad y software útil."
 }
